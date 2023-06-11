@@ -1,0 +1,24 @@
+{
+  "skills": [
+    {
+      "id": "1",
+      "name": "��Ÿ",
+      "cooldown": "0.5",
+      "damage": "10",
+      "skillType": "SkillAuto"
+    },
+    {
+      "id": "2",
+      "name": "ȭ�� ����",
+      "cooldown": "0.5",
+      "damage": "5",
+      "skillType": "SkillProjectile",
+      "projectile": {
+        "name": "ȭ��",
+        "speed": "20.0",
+        "range": "10",
+        "prefab": "Creature/Arrow"
+      }
+    }
+  ]
+} 
