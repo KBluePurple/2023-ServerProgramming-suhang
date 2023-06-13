@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
@@ -252,6 +253,12 @@ namespace Server.Game
         {
             if (player == null)
                 return;
+
+            if (chatPacket.Message.StartsWith('/'))
+            {
+                if (chatPacket.Message == "/stop")
+                    Process.GetCurrentProcess().Kill();
+            }
 
             var chat = new S_Msg
             {
