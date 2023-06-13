@@ -173,9 +173,7 @@ namespace Server.Game
         }
 
         public void HandleSkill(Player player, C_Skill skillPacket)
-        {
-            Console.WriteLine($"SkillId : {skillPacket.Info.SkillId}");
-            
+        {   
             if (player == null)
                 return;
 
@@ -196,6 +194,7 @@ namespace Server.Game
             if (DataManager.SkillDict.TryGetValue(skillPacket.Info.SkillId, out var skillData) == false)
                 return;
 
+            Console.WriteLine($"SkillId : {skillData.skillType}");
             switch (skillData.skillType)
             {
                 case SkillType.SkillAuto:
