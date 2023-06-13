@@ -12,13 +12,16 @@ public class UIManager
         get
         {
             var root = GameObject.Find("@UI_Root");
-            if (root == null)
-                root = new GameObject { name = "@UI_Root" };
+            if (root != null) return root;
+            
+            root = new GameObject { name = "@UI_Root" };
+            root.AddComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+
             return root;
         }
     }
 
-    public UI_Chat Chat { get; }
+    public UI_Chat Chat { get; private set; }
 
     public void SetCanvas(GameObject go, bool sort = true)
     {
@@ -35,6 +38,11 @@ public class UIManager
         {
             canvas.sortingOrder = 0;
         }
+    }
+    
+    public void SetChatUI(UI_Chat chat)
+    {
+        Chat = chat;
     }
 
     public T MakeWorldSpaceUI<T>(Transform parent = null, string name = null) where T : UI_Base

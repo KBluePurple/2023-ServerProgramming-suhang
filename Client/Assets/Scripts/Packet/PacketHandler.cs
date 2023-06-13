@@ -87,6 +87,6 @@ public static class PacketHandler
     public static void S_MsgHandler(PacketSession session, IMessage packet)
     {
         if (packet is S_Msg msgPacket)
-            Managers.UI.Chat.AddChat(msgPacket.Message);
+            Managers.UI.Chat.AddChat($"{msgPacket.PlayerId}: {msgPacket.Message}");
     }
 }

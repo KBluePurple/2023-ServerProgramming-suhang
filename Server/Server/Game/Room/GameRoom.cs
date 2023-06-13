@@ -226,6 +226,7 @@ namespace Server.Game
                         Hp = player.Hp
                     };
                     Broadcast(healthChangePacket);
+                    Console.WriteLine("Heal");
                     break;
                 case SkillType.SkillNone:
                     break;

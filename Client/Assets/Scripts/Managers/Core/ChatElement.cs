@@ -1,10 +1,12 @@
-﻿using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class ChatElement : UI_Base
+public class ChatElement : MonoBehaviour
 {
     private Text _text;
 
-    public override void Init()
+    private void Awake()
     {
         _text = GetComponent<Text>();
     }
