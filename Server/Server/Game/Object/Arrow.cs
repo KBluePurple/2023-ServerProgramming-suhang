@@ -28,8 +28,6 @@ namespace Server.Game
                 movePacket.ObjectId = Id;
                 movePacket.PosInfo = PosInfo;
                 Room.Broadcast(movePacket);
-
-                Console.WriteLine("Move Arrow");
             }
             else
             {
