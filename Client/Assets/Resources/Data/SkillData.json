@@ -19,6 +19,13 @@
         "range": "10",
         "prefab": "Creature/Arrow"
       }
+    },
+    {
+      "id": "3",
+      "name": "����",
+      "cooldown": "0.5",
+      "damage": "10",
+      "skillType": "SkillAuto"
     }
   ]
 } 
