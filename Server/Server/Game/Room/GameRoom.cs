@@ -172,6 +172,8 @@ namespace Server.Game
 
         public void HandleSkill(Player player, C_Skill skillPacket)
         {
+            Console.WriteLine($"SkillId : {skillPacket.Info.SkillId}");
+            
             if (player == null)
                 return;
 
@@ -219,7 +221,7 @@ namespace Server.Game
                     break;
                 case SkillType.SkillHeal:
                     player.Hp += 10;
-                    
+
                     var healthChangePacket = new S_ChangeHp
                     {
                         ObjectId = player.Info.ObjectId,

@@ -59,6 +59,7 @@ public class MyPlayerController : PlayerController
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            Debug.Log("Skill Heal!");
             var skill = new C_Skill
             {
                 Info = new SkillInfo
