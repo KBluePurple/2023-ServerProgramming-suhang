@@ -163,9 +163,11 @@ namespace Server.Game
             Map.ApplyMove(player, new Vector2Int(movePosInfo.PosX, movePosInfo.PosY));
 
             // 다른 플레이어한테도 알려준다
-            var resMovePacket = new S_Move();
-            resMovePacket.ObjectId = player.Info.ObjectId;
-            resMovePacket.PosInfo = movePacket.PosInfo;
+            var resMovePacket = new S_Move
+            {
+                ObjectId = player.Info.ObjectId,
+                PosInfo = movePacket.PosInfo
+            };
 
             Broadcast(resMovePacket);
         }
