@@ -44,6 +44,7 @@ enum SkillType {
   SKILL_NONE = 0;
   SKILL_AUTO = 1;
   SKILL_PROJECTILE = 2;
+  SKILL_HEAL = 3;
 }
 
 message S_EnterGame {

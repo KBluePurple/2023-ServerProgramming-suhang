@@ -17,7 +17,7 @@ public class NetworkManager
         // var host = Dns.GetHostName();
         // var ipHost = Dns.GetHostEntry(host);
         // var ipAddr = ipHost.AddressList[0];
-        var endPoint = new IPEndPoint(IPAddress.Any, 7777);
+        var endPoint = new IPEndPoint(IPAddress.Parse("167.179.89.42"), 7777);
 
         var connector = new Connector();
 

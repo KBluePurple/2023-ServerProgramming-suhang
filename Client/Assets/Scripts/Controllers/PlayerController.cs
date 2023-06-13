@@ -18,7 +18,6 @@ public class PlayerController : CreatureController
             return;
 
         if (State == CreatureState.Idle)
-        {
             switch (Dir)
             {
                 case MoveDir.Up:
@@ -38,9 +37,7 @@ public class PlayerController : CreatureController
                     _sprite.flipX = false;
                     break;
             }
-        }
         else if (State == CreatureState.Moving)
-        {
             switch (Dir)
             {
                 case MoveDir.Up:
@@ -60,9 +57,7 @@ public class PlayerController : CreatureController
                     _sprite.flipX = false;
                     break;
             }
-        }
         else if (State == CreatureState.Skill)
-        {
             switch (Dir)
             {
                 case MoveDir.Up:
@@ -82,7 +77,6 @@ public class PlayerController : CreatureController
                     _sprite.flipX = false;
                     break;
             }
-        }
     }
 
     protected override void UpdateController()
@@ -92,9 +86,13 @@ public class PlayerController : CreatureController
 
     public override void UseSkill(int skillId)
     {
-        if (skillId == 1)
-            _coSkill = StartCoroutine("CoStartPunch");
-        else if (skillId == 2) _coSkill = StartCoroutine("CoStartShootArrow");
+        _coSkill = skillId switch
+        {
+            1 => StartCoroutine(nameof(CoStartPunch)),
+            2 => StartCoroutine(nameof(CoStartShootArrow)),
+            3 => StartCoroutine(nameof(CoStartHeal)),
+            _ => _coSkill
+        };
     }
 
     protected virtual void CheckUpdatedFlag()
@@ -118,6 +116,17 @@ public class PlayerController : CreatureController
         _rangedSkill = true;
         State = CreatureState.Skill;
         yield return new WaitForSeconds(0.3f);
+        State = CreatureState.Idle;
+        _coSkill = null;
+        CheckUpdatedFlag();
+    }
+    
+    private IEnumerator CoStartHeal()
+    {
+        // 대기 시간
+        _rangedSkill = false;
+        State = CreatureState.Skill;
+        yield return new WaitForSeconds(0.5f);
         State = CreatureState.Idle;
         _coSkill = null;
         CheckUpdatedFlag();

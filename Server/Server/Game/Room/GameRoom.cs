@@ -217,6 +217,16 @@ namespace Server.Game
                     Push(EnterGame, arrow);
                 }
                     break;
+                case SkillType.SkillHeal:
+                    player.Hp += 10;
+                    
+                    var healthChangePacket = new S_ChangeHp
+                    {
+                        ObjectId = player.Info.ObjectId,
+                        Hp = player.Hp
+                    };
+                    Broadcast(healthChangePacket);
+                    break;
                 case SkillType.SkillNone:
                     break;
                 default:
