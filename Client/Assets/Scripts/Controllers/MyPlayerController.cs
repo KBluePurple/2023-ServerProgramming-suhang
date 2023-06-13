@@ -45,11 +45,28 @@ public class MyPlayerController : PlayerController
         {
             Debug.Log("Skill !");
 
-            var skill = new C_Skill { Info = new SkillInfo() };
-            skill.Info.SkillId = 2;
+            var skill = new C_Skill
+            {
+                Info = new SkillInfo
+                {
+                    SkillId = 2
+                }
+            };
             Managers.Network.Send(skill);
 
             _coSkillCooltime = StartCoroutine("CoInputCooltime", 0.2f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            var skill = new C_Skill
+            {
+                Info = new SkillInfo
+                {
+                    SkillId = 3
+                }
+            };
+            Managers.Network.Send(skill);
         }
     }
 
